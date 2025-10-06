@@ -9,4 +9,9 @@ abstract contract BaseScript is Script {
         _;
         vm.stopBroadcast();
     }
+
+    modifier fork(string memory network) {
+        vm.createSelectFork(network);
+        _;
+    }
 }
