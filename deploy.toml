@@ -2,7 +2,7 @@
 # This is the most common configuration for deploying to Ethereum testnets
 
 [project]
-name = "scalar-money-contract"
+name = "meta-account"
 script = "Deploy"                                               # Will look for script/Deploy.s.sol
 network = "monad"                                             # Default network to deploy to
 setup_command = "bun install"                                   # Command to install dependencies
@@ -23,6 +23,8 @@ BROADCAST_ACCOUNT = "0xaa31349a2eF4A37Dc4Dd742E3b0E32182F524A6A"
 chain_id = 11155111
 rpc_url = "https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
 verify = true                                                       # Verify contract on Etherscan
+[networks.sepolia.extra_args]
+slow = ""
 
 [networks.mainnet]
 chain_id = 1
@@ -39,6 +41,9 @@ chain_id = 10143
 rpc_url = "https://testnet-rpc.monad.xyz"
 verify = true
 
+[networks.monad.extra_args]
+verifier = "etherscan"
+etherscan-api-key = "${ETHERSCAN_API_KEY}"
 
 # Required environment variables (set in .env file):
 # KEYSTORE_ACCOUNT=your_keystore_account_name

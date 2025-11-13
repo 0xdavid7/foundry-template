@@ -2,7 +2,11 @@
 pragma solidity >=0.8.0;
 
 import { BaseScript } from "./Base.s.sol";
+import { MyContract } from "../src/MyContract.sol";
 
-abstract contract Deploy is BaseScript {
-// Deployment script - override run() method in derived contracts
+contract Deploy is BaseScript {
+    function run() public broadcast returns (MyContract) {
+        MyContract myContract = new MyContract();
+        return myContract;
+    }
 }
